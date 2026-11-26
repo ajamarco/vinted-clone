@@ -1,4 +1,5 @@
 <!-- BEGIN:nextjs-agent-rules -->
+
 # Project documentation
 
 Before starting any coding task, read every Markdown file currently present in `docs/`, not just a previously known list. At minimum, the project currently requires:

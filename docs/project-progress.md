@@ -14,6 +14,7 @@ A running log of completed work on this project. Agents read this at the start o
 
 ```md
 ### YYYY-MM-DD — Feature or task name
+
 - **Spec:** `specs/NN-name` (or "none" if the task had no spec)
 - **Summary:** one or two sentences on what was done.
 - **Key files:** `path/to/file.tsx`, `path/to/other.ts`
@@ -23,7 +24,16 @@ A running log of completed work on this project. Agents read this at the start o
 
 ## Completed work
 
+### 2026-11-26 — Rules compliance cleanup
+
+- **Spec:** `specs/01-rules-compliance`
+- **Summary:** Moved routes and grouped components to the root project structure, centralized listing domain types, applied the TypeScript and export rules, and replaced internal anchors with `next/link` while preserving the UI and colours.
+- **Key files:** `app/`, `components/`, `types/listing.ts`, `jest.config.ts`, `prettier.config.mjs`, `package.json`
+- **Decisions / notes:** `Navbar` is a Server Component; only the stateful `SearchBox` uses the client boundary. Prettier, Tailwind class sorting, Jest, React Testing Library, and colocated component tests are configured.
+- **Follow-ups:** none for this spec.
+
 ### 2026-05-10 — Layout components and product grid
+
 - **Spec:** none (predates spec-driven development)
 - **Summary:** Built the initial marketplace UI shell: navbar, category bar, and a product grid of listing cards. Replaced the Create Next App placeholder home page with the grid.
 - **Key files:** `src/components/Navbar.tsx`, `src/components/CategoryBar.tsx`, `src/components/ProductGrid.tsx`, `src/components/GridCard.tsx`, `src/app/layout.tsx`, `src/app/page.tsx`, `next.config.ts`, `public/image001.webp`
@@ -31,6 +41,7 @@ A running log of completed work on this project. Agents read this at the start o
 - **Follow-ups:** Replace sample data with a real data source.
 
 ### Project start — Initial commit
+
 - **Spec:** none (predates spec-driven development)
 - **Summary:** Project scaffolded with Create Next App.
 - **Key files:** project root config.
@@ -39,5 +50,5 @@ A running log of completed work on this project. Agents read this at the start o
 
 ## Known gaps / next steps
 
-- Spec `01-rules-compliance` is written (`specs/01-rules-compliance/specs.md`) but not yet implemented.
 - No backend or real data yet (listings are hardcoded).
+- `npm install` reports 35 dependency audit findings; dependency remediation is outside `01-rules-compliance`.
