@@ -24,6 +24,38 @@ A running log of completed work on this project. Agents read this at the start o
 
 ## Completed work
 
+### 2026-11-26 — Visual check of specs 02 and 03
+
+- **Spec:** `specs/02-design-foundation`, `specs/03-header`
+- **Summary:** Compared the running app with the design in Edge (Playwright driving the installed Edge, set up outside the repo) at 1280px and 390px wide. The header, buttons, tags, badges, and inputs match the design. The header's mobile layout was adjusted: the nav and link gaps are tighter below 768px so the logo, links, and "Sell" fit on one row with the kept logo icon.
+- **Key files:** `components/layout/Navbar.tsx`
+- **Decisions / notes:** Known differences: the logo icon (kept on purpose), and the header is about 2px taller than the design. The 390px row is tight, and narrower phones wrap the links to a second row. This supersedes the "not compared visually" follow-up in the two entries below.
+- **Follow-ups:** none.
+
+### 2026-11-26 — Header restyled to Wontid
+
+- **Spec:** `specs/03-header`
+- **Summary:** Replaced the fixed navbar and category bar with one sticky `Header` (navbar, search, category sub-nav) in the Wontid look, visible at all widths. Removed the home page's offset for the old fixed header.
+- **Key files:** `components/layout/Header.tsx`, `Navbar.tsx`, `SearchBox.tsx`, `CategoryBar.tsx` (with tests), `components/ui/icons/SearchIcon.tsx`, `app/layout.tsx`, `app/page.tsx`, `app/globals.css` (`scrollbar-hidden` utility)
+- **Decisions / notes:** `SearchBox` is now a Server Component (focus styling is CSS only). It is a `div role="search"`, not a `<form>`, so Enter does not reload the page until real search exists. The "Sell Now" button and account icon became "Sell" (`Button` link) and a "Sign in" link. The category nav is labelled "Categories" (was "Browse categories"). "Browse" is hardcoded as the current page. The home page still has `bg-zinc-50` until spec 04.
+- **Follow-ups:** specs 04 to 06.
+
+### 2026-11-26 — Design foundation (Wontid tokens, fonts, UI components)
+
+- **Spec:** `specs/02-design-foundation`
+- **Summary:** Renamed the app to Wontid (tab title `Wontid — Circular Fashion Marketplace`), added the brand tokens in `app/globals.css`, loaded Fraunces and Source Sans 3 with `next/font/google`, set up shadcn, and built `Button`, `Input`, `Tag`, and `Badge`.
+- **Key files:** `app/globals.css`, `app/layout.tsx`, `components/ui/button.tsx`, `input.tsx`, `badge.tsx`, `Tag.tsx` (each with a test), `lib/utils.ts`, `components.json`
+- **Decisions / notes:**
+  - shadcn (base-nova style, on `@base-ui/react`) was initialised with the CLI and its generated colour variables, dark mode, and the `cn`, `lucide-react`, `class-variance-authority`, `tw-animate-css`, and `shadcn` packages were removed. `cn` is `clsx` plus `tailwind-merge`. `Button`, `Input`, and `Badge` were then rewritten to the design. shadcn files keep the CLI's lowercase names. `Tag.tsx` is PascalCase per the personal rules.
+  - Tokens use `@theme static`, so the utilities are `bg-primary`, `text-text`, `text-text-muted`, `bg-bg`, `bg-surface`, `border-border`, `text-on-primary`, `bg-highlight`, `bg-secondary`, `text-error`, `shadow-card`, `shadow-hover`, `font-heading`, `font-body`. The `secondary` token is Dusty Rose, not shadcn's neutral secondary.
+  - The design's text scale names differ from Tailwind's: design "lg" (1.25rem) is `text-xl`, design "xl" (1.5rem) is `text-2xl`. Only `text-hero` and `text-section` (2rem) were added. Radius `sm`/`md`/`lg` already match Tailwind's defaults.
+  - `Button` takes a `variant` (`primary`, `secondary`, `destructive`) and renders a `next/link` when given an `href`. `Badge` takes a required `variant` (`sale`, `new`).
+  - The input focus ring is `primary` at 20%, not the design's rejected `#3E7C7A`.
+  - Base styles sit in `@layer base`, so utilities override them.
+  - The logo icon and favicon are unchanged, so the Font Awesome link stays in `app/layout.tsx`. The logo is its only user.
+  - The old `GridCard` and `ProductGrid` keep their old colours until spec 04, so the app looks mixed.
+- **Follow-ups:** Remove the Font Awesome link when the logo is replaced. The checks (typecheck, lint, format, tests, build) pass, but the pages were not compared visually against the design, because no browser was available in this session. Do that comparison.
+
 ### 2026-11-26 — Design specs split into five (02 to 06)
 
 - **Spec:** `specs/02-design-foundation`, `specs/03-header`, `specs/04-listings`, `specs/05-landing-hero-and-categories`, `specs/06-landing-info-and-footer`
@@ -66,5 +98,6 @@ A running log of completed work on this project. Agents read this at the start o
 
 ## Known gaps / next steps
 
+- Font Awesome is still loaded in `app/layout.tsx` only for the logo icon. Remove it when the logo is replaced.
 - No backend or real data yet (listings are hardcoded).
 - `npm install` reports 35 dependency audit findings; dependency remediation is outside `01-rules-compliance`.

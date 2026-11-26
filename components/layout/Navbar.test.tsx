@@ -1,16 +1,38 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 
 import { Navbar } from "@/components/layout/Navbar";
 
 describe("Navbar", () => {
-  it("provides navigation and marketplace actions", () => {
+  it("links the logo to the home page", () => {
     render(<Navbar />);
 
-    expect(screen.getByRole("link", { name: "Clearout home" })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: "Wontid home" })).toHaveAttribute(
       "href",
       "/",
     );
-    expect(screen.getByRole("button", { name: "Sell Now" })).toBeEnabled();
-    expect(screen.getByRole("button", { name: "Your account" })).toBeEnabled();
+  });
+
+  it("provides browse, sign in and sell links", () => {
+    render(<Navbar />);
+
+    const navigation = screen.getByRole("navigation", { name: "Main" });
+
+    expect(
+      within(navigation).getByRole("link", { name: "Browse" }),
+    ).toHaveAttribute("aria-current", "page");
+    expect(
+      within(navigation).getByRole("link", { name: "Sign in" }),
+    ).toBeInTheDocument();
+    expect(
+      within(navigation).getByRole("link", { name: "Sell" }),
+    ).toBeInTheDocument();
+  });
+
+  it("includes a labelled search field", () => {
+    render(<Navbar />);
+
+    expect(
+      screen.getByRole("searchbox", { name: "Search listings" }),
+    ).toBeInTheDocument();
   });
 });

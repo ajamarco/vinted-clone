@@ -1,37 +1,24 @@
-"use client";
-
 import type { ReactElement } from "react";
-import { useState } from "react";
+
+import { SearchIcon } from "@/components/ui/icons/SearchIcon";
+import { Input } from "@/components/ui/input";
 
 export const SearchBox = (): ReactElement => {
-  const [searchFocused, setSearchFocused] = useState(false);
-
   return (
-    <div className="min-w-0 flex-1">
-      <div
-        className={[
-          "relative flex items-center rounded-full border transition-all duration-200",
-          searchFocused
-            ? "border-[#005d4b] bg-white shadow-[0_0_0_3px_rgba(0,93,75,0.12)]"
-            : "border-gray-200 bg-gray-100 hover:border-gray-300",
-        ].join(" ")}
-      >
-        <i
-          className={[
-            "fa-solid fa-magnifying-glass pointer-events-none absolute left-4 text-sm transition-colors duration-200",
-            searchFocused ? "text-[#005d4b]" : "text-gray-400",
-          ].join(" ")}
-          aria-hidden="true"
-        />
-        <input
-          type="search"
-          placeholder="Search for brands, items, or sellers..."
-          aria-label="Search Clearout"
-          className="w-full rounded-full bg-transparent py-2.5 pr-5 pl-10 text-sm text-gray-800 caret-[#005d4b] outline-none placeholder:text-gray-400"
-          onFocus={() => setSearchFocused(true)}
-          onBlur={() => setSearchFocused(false)}
-        />
-      </div>
+    <div
+      role="search"
+      className="relative order-3 basis-full md:order-none md:max-w-110 md:flex-1 md:basis-70"
+    >
+      <label htmlFor="site-search" className="sr-only">
+        Search listings
+      </label>
+      <SearchIcon className="text-text-muted pointer-events-none absolute top-1/2 left-3 -translate-y-1/2" />
+      <Input
+        id="site-search"
+        type="search"
+        placeholder="Search for corduroy, Levi's, silk scarves…"
+        className="bg-bg pl-10"
+      />
     </div>
   );
 };

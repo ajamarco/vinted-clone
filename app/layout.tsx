@@ -1,24 +1,25 @@
 import type { Metadata } from "next";
 import type { ReactElement, ReactNode } from "react";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Fraunces, Source_Sans_3 } from "next/font/google";
 
-import { CategoryBar } from "@/components/layout/CategoryBar";
-import { Navbar } from "@/components/layout/Navbar";
+import { Header } from "@/components/layout/Header";
 
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
   subsets: ["latin"],
+  weight: ["600", "700"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const sourceSans = Source_Sans_3({
+  variable: "--font-source-sans-3",
   subsets: ["latin"],
+  weight: ["400", "600"],
 });
 
 export const metadata: Metadata = {
-  title: "Clearout — Circular Fashion Marketplace",
+  title: "Wontid — Circular Fashion Marketplace",
   description: "Buy and sell pre-loved fashion in the UK.",
 };
 
@@ -30,7 +31,7 @@ const RootLayout = ({ children }: RootLayoutProps): ReactElement => {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${fraunces.variable} ${sourceSans.variable} h-full antialiased`}
     >
       <head>
         <link
@@ -39,8 +40,7 @@ const RootLayout = ({ children }: RootLayoutProps): ReactElement => {
         />
       </head>
       <body className="flex min-h-full flex-col">
-        <Navbar />
-        <CategoryBar />
+        <Header />
         {children}
       </body>
     </html>

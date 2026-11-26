@@ -4,7 +4,7 @@ import { ProductGrid } from "@/components/listings/ProductGrid";
 
 const Home = (): ReactElement => {
   return (
-    <main className="flex flex-1 flex-col bg-zinc-50 pt-16 lg:pt-26">
+    <main className="flex flex-1 flex-col bg-zinc-50">
       <ProductGrid />
     </main>
   );

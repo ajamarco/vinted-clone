@@ -51,19 +51,19 @@ Define these in `app/globals.css` with `@theme`, named so Tailwind generates uti
 
 Colour:
 
-| Name | Hex | Token |
-| --- | --- | --- |
-| Faded Teal | `#38726F` | `primary` |
-| Teal Hover | `#326462` | `primary-hover` |
-| Dusty Rose | `#C98B8B` | `secondary` |
-| Mustard | `#D9A441` | `highlight` |
-| Espresso | `#3B2F2A` | `text` |
-| Walnut | `#7A6A5F` | `text-muted` |
-| Aged Paper | `#F6EFE3` | `bg` |
-| Cream | `#FBF7EF` | `surface` |
-| Sepia Tan | `#D8C7AE` | `border` |
-| Brick | `#A8432F` | `error` |
-| Cream (on primary) | `#FBF7EF` | `on-primary` |
+| Name               | Hex       | Token           |
+| ------------------ | --------- | --------------- |
+| Faded Teal         | `#38726F` | `primary`       |
+| Teal Hover         | `#326462` | `primary-hover` |
+| Dusty Rose         | `#C98B8B` | `secondary`     |
+| Mustard            | `#D9A441` | `highlight`     |
+| Espresso           | `#3B2F2A` | `text`          |
+| Walnut             | `#7A6A5F` | `text-muted`    |
+| Aged Paper         | `#F6EFE3` | `bg`            |
+| Cream              | `#FBF7EF` | `surface`       |
+| Sepia Tan          | `#D8C7AE` | `border`        |
+| Brick              | `#A8432F` | `error`         |
+| Cream (on primary) | `#FBF7EF` | `on-primary`    |
 
 - The design lists an "Original Teal" `#3E7C7A` as **not used** because it fails WCAG AA. Do not use it. The design's input focus ring still uses `rgba(62,124,122,0.2)`, which is that rejected teal. Use `primary` at 20% opacity instead (`rgba(56,114,111,0.2)`), and note this in the progress entry.
 - Keep every text and background pairing at least as strong as the contrast table in `DesignSystem.dc.html`. Never lighten a colour to "match" better.
