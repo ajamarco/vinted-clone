@@ -24,6 +24,14 @@ A running log of completed work on this project. Agents read this at the start o
 
 ## Completed work
 
+### 2026-11-26 — Fix Vercel font build error
+
+- **Spec:** none
+- **Summary:** Vercel's Turbopack build failed with 14 "Can't resolve `@vercel/turbopack-next/internal/font/google/font`" errors, all in the Source Sans 3 `@font-face` rules (weights 400 and 600). Removed the explicit `weight` option so Source Sans 3 loads as one variable font, as Fraunces already does.
+- **Key files:** `app/layout.tsx`
+- **Decisions / notes:** The local build passed before and after the change, so the cause on Vercel was not reproduced. This is a best-guess fix. If it still fails on Vercel, clear the build cache and redeploy, or build with `next build --webpack`.
+- **Follow-ups:** Confirm the next Vercel deploy succeeds.
+
 ### 2026-11-26 — Mobile version of the landing page
 
 - **Spec:** `specs/07-mobile-version`

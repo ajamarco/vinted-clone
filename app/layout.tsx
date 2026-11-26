@@ -16,7 +16,6 @@ const fraunces = Fraunces({
 const sourceSans = Source_Sans_3({
   variable: "--font-source-sans-3",
   subsets: ["latin"],
-  weight: ["400", "600"],
 });
 
 export const metadata: Metadata = {
