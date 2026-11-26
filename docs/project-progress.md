@@ -14,6 +14,7 @@ A running log of completed work on this project. Agents read this at the start o
 
 ```md
 ### YYYY-MM-DD — Feature or task name
+- **Spec:** `specs/NN-name` (or "none" if the task had no spec)
 - **Summary:** one or two sentences on what was done.
 - **Key files:** `path/to/file.tsx`, `path/to/other.ts`
 - **Decisions / notes:** anything a future agent should know (trade-offs, conventions introduced, gotchas).
@@ -23,12 +24,14 @@ A running log of completed work on this project. Agents read this at the start o
 ## Completed work
 
 ### 2026-05-10 — Layout components and product grid
+- **Spec:** none (predates spec-driven development)
 - **Summary:** Built the initial marketplace UI shell: navbar, category bar, and a product grid of listing cards. Replaced the Create Next App placeholder home page with the grid.
 - **Key files:** `src/components/Navbar.tsx`, `src/components/CategoryBar.tsx`, `src/components/ProductGrid.tsx`, `src/components/GridCard.tsx`, `src/app/layout.tsx`, `src/app/page.tsx`, `next.config.ts`, `public/image001.webp`
 - **Decisions / notes:** Listings are hardcoded sample data with a sample image, not fetched from a backend. `RootLayout` metadata was updated and now renders `Navbar` and `CategoryBar`.
 - **Follow-ups:** Replace sample data with a real data source.
 
 ### Project start — Initial commit
+- **Spec:** none (predates spec-driven development)
 - **Summary:** Project scaffolded with Create Next App.
 - **Key files:** project root config.
 - **Decisions / notes:** This Next.js version has breaking changes. See `AGENTS.md` and `node_modules/next/dist/docs/`.
@@ -36,4 +39,5 @@ A running log of completed work on this project. Agents read this at the start o
 
 ## Known gaps / next steps
 
+- Spec `01-rules-compliance` is written (`specs/01-rules-compliance/specs.md`) but not yet implemented.
 - No backend or real data yet (listings are hardcoded).

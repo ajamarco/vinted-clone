@@ -5,6 +5,7 @@ Before starting any coding task, read every Markdown file currently present in `
 
 - `docs/personal-coding-rules.md` for personal coding, type, naming, quality, and testing rules.
 - `docs/nextjs-stack-rules.md` for this project's frontend stack, architecture, framework, and testing rules.
+- `docs/spec-driven-development.md` for how this project is built from specs in `specs/`.
 
 Apply all instructions in these files together. When the stack-specific guidance conflicts with a personal coding rule, follow the stack-specific guidance for this project. Re-check `docs/` at the start of each task so that newly added documentation is not missed.
 
