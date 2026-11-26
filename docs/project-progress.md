@@ -24,6 +24,22 @@ A running log of completed work on this project. Agents read this at the start o
 
 ## Completed work
 
+### 2026-11-26 — Design specs split into five (02 to 06)
+
+- **Spec:** `specs/02-design-foundation`, `specs/03-header`, `specs/04-listings`, `specs/05-landing-hero-and-categories`, `specs/06-landing-info-and-footer`
+- **Summary:** Split the Wontid design work into five specs and removed the single combined spec folder, which had no code behind it. Nothing is implemented yet. Supersedes the "Spec 02 written" entry below, whose folder name no longer exists.
+- **Key files:** the five `specs/*/specs.md` files above.
+- **Decisions / notes:** App is renamed Wontid (tab title `Wontid — Circular Fashion Marketplace`), logo icon and favicon stay. Every image uses `/image001.webp`. The 30 sample listings stay. Font Awesome stays for the logo only. Implement in order 02 to 06. Open questions: shadcn in 02, brand and badge data for the card in 04.
+- **Follow-ups:** answer the two open questions, then implement spec 02.
+
+### 2026-11-26 — Spec 02 written (design implementation)
+
+- **Spec:** `specs/02-design-implementation`
+- **Summary:** Wrote the spec for implementing the Wontid design from Claude Design. Nothing is implemented yet; this entry only records that the spec exists.
+- **Key files:** `specs/02-design-implementation/specs.md`
+- **Decisions / notes:** The design source is a Claude Design canvas with two artboards (`Main.dc.html` landing page, `DesignSystem.dc.html`). The spec lists six open questions (shadcn, listing data model, sample content, photos, grain overlay, nav targets) to answer before implementing.
+- **Follow-ups:** Implement spec 02 after the open questions are answered.
+
 ### 2026-11-26 — Rules compliance cleanup
 
 - **Spec:** `specs/01-rules-compliance`
