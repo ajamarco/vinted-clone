@@ -15,10 +15,12 @@ describe("Footer", () => {
     ).toBeInTheDocument();
   });
 
+  // jsdom applies no CSS, so the links that are only shown on mobile
+  // ("Seller guide" in Shop, "Fees" in Help) are in the list as well.
   it.each([
-    ["Shop", ["New in", "Categories", "Brands", "Sale"]],
+    ["Shop", ["New in", "Categories", "Brands", "Sale", "Seller guide"]],
     ["Sell", ["List an item", "Seller guide", "Shipping", "Fees"]],
-    ["Help", ["Help centre", "Returns", "Safety", "Contact us"]],
+    ["Help", ["Help centre", "Returns", "Safety", "Contact us", "Fees"]],
   ])("has a %s navigation with its links", (heading, labels) => {
     render(<Footer />);
 

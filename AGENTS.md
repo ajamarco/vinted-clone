@@ -21,4 +21,5 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 - **At the start of every task:** read `docs/project-progress.md` in full, so you know what already exists before writing code.
 - **At the end of every task:** as soon as the task is complete, and before reporting it as done, add an entry at the top of "Completed work" in `docs/project-progress.md`. Follow the entry template in that file. Cover what was done, the key files, any decisions or gotchas, and follow-ups. Update "Known gaps / next steps" if needed.
+- **When the task completes a spec:** after adding the progress entry, move that spec's folder from `specs/` into `specs/completed/` (see `docs/spec-driven-development.md`). Do this as the final step.
 - Never skip the update, even for small tasks. Do not rewrite earlier entries. Add a new one instead.

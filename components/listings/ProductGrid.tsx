@@ -304,8 +304,7 @@ export const ProductGrid = ({
   listings = LISTINGS,
 }: ProductGridProps): ReactElement => {
   return (
-    // The design switches to two columns at 600px, which has no standard breakpoint.
-    <ul className="grid grid-cols-1 gap-6 min-[600px]:grid-cols-2 lg:grid-cols-4">
+    <ul className="grid grid-cols-2 gap-x-3 gap-y-4 md:gap-6 lg:grid-cols-4">
       {listings.map((item) => (
         <li key={item.id}>
           <GridCard

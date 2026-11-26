@@ -24,6 +24,28 @@ A running log of completed work on this project. Agents read this at the start o
 
 ## Completed work
 
+### 2026-11-26 — Mobile version of the landing page
+
+- **Spec:** `specs/07-mobile-version`
+- **Summary:** Restyled the landing page below 768px to match the mobile design. From 768px up, the layout is unchanged.
+- **Key files:** `components/layout/Navbar.tsx`, `SearchBox.tsx`, `CategoryBar.tsx`, `Footer.tsx` (and its test), `components/home/Hero.tsx`, `CategoryChips.tsx`, `HowItWorks.tsx`, `ClosingBand.tsx`, `components/listings/FeaturedListings.tsx`, `ProductGrid.tsx`, `GridCard.tsx`, `app/globals.css` (new `--text-section-sm` token, 1.75rem)
+- **Decisions / notes:**
+  - On mobile: no "Browse" link, shorter search placeholder, stacked full-width hero buttons, "Shop by category" hidden, 2-column compact cards without the condition tag, step numbers beside the text, two-column footer.
+  - The category bar is a sideways-scrolling row whose items never shrink, so the last visible one is cut off at the edge. Focus outlines are drawn inside the links so the row does not clip them.
+  - The search placeholder is a single space plus two spans (mobile and desktop text) shown with `peer-placeholder-shown`, so the field stays a Server Component. The text is `aria-hidden`; the accessible name still comes from the label.
+  - The footer data has a `visibility` field (`all`, `mobile`, `desktop`). "Seller guide" and "Fees" exist twice in the DOM, once in the mobile groups and once in "Sell", and each copy is `display: none` at the other width. Footer tests run in jsdom without CSS, so they expect the mobile copies in the Shop and Help lists too.
+  - Combining `max-md:hidden` with `max-md:inline-flex` on the same link lets the later CSS rule win, so the tap-target classes are applied to "Sign in" only.
+  - Checked in Edge at 390px (page in an iframe, since headless Edge has a minimum window width): header, hero, listings, steps, band, and footer match the design. 360px, 375px, 430px and 767px were not checked by eye.
+- **Follow-ups:** Check the page by eye at 360px, 375px, 430px and 767px, and that the category bar scrolls on a real touch device.
+
+### 2026-11-26 — Spec 07 written (mobile version of the landing page)
+
+- **Spec:** `specs/07-mobile-version`
+- **Summary:** Wrote the spec for matching the Wontid mobile design (the "Landing page · mobile" artboard, `Mobile.dc.html`). Nothing is implemented yet; this entry only records that the spec exists.
+- **Key files:** `specs/07-mobile-version/specs.md`
+- **Decisions / notes:** Mobile means below 768px, and the desktop layout must not change. Main differences from today: no "Browse" link and a shorter search placeholder in the header, tighter hero with stacked full-width buttons, "Shop by category" hidden, 2-column compact featured cards without the condition tag, step numbers beside the text, and a two-column footer with no "Sell" group (its links move into Shop and Help). The logo icon stays.
+- **Follow-ups:** Implement it. The three open questions are answered: category chips hidden on mobile, all 30 listings kept, logo icon kept. The spec also requires the header's category bar to stay a horizontally scrollable row, with a cut-off item at the edge as the hint and the last item fully reachable.
+
 ### 2026-11-26 — Landing info sections and footer
 
 - **Spec:** `specs/06-landing-info-and-footer`

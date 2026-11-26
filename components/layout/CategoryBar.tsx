@@ -16,12 +16,16 @@ const CATEGORIES = [
 export const CategoryBar = (): ReactElement => {
   return (
     <nav aria-label="Categories" className="border-border border-t">
-      <ul className="scrollbar-hidden mx-auto flex max-w-300 gap-6 overflow-x-auto px-6 md:px-8 lg:justify-between">
+      {/* The row scrolls sideways on narrow screens, and the items never shrink
+          or wrap, so the ones that do not fit are cut off at the edge. */}
+      <ul className="scrollbar-hidden mx-auto flex max-w-300 gap-5 overflow-x-auto px-6 md:gap-6 md:px-8 lg:justify-between">
         {CATEGORIES.map((category) => (
-          <li key={category}>
+          <li key={category} className="shrink-0">
+            {/* The mobile design's 15px text has no standard Tailwind size. The
+                focus outline is drawn inside so the scrolling row cannot clip it. */}
             <Link
               href="#"
-              className="text-text hover:border-primary hover:text-text aria-[current=page]:border-primary block border-b-2 border-transparent px-1 py-3 whitespace-nowrap no-underline"
+              className="text-text hover:border-primary hover:text-text aria-[current=page]:border-primary block border-b-2 border-transparent px-1 py-3 text-[15px] whitespace-nowrap no-underline focus-visible:-outline-offset-2 md:text-base"
             >
               {category}
             </Link>

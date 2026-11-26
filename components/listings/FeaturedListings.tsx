@@ -8,10 +8,13 @@ export const FeaturedListings = (): ReactElement => {
     <section
       id="featured"
       aria-labelledby="featured-title"
-      className="mx-auto w-full max-w-300 px-6 py-12 md:px-8 md:py-16"
+      className="mx-auto w-full max-w-300 px-6 py-8 md:px-8 md:py-16"
     >
-      <div className="mb-8 flex flex-wrap items-baseline justify-between gap-4">
-        <h2 id="featured-title" className="font-heading text-section font-bold">
+      <div className="mb-6 flex flex-wrap items-baseline justify-between gap-3 md:mb-8 md:gap-4">
+        <h2
+          id="featured-title"
+          className="font-heading text-section-sm md:text-section font-bold"
+        >
           Featured listings
         </h2>
         <Link

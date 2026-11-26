@@ -25,9 +25,10 @@ const CATEGORY_CHIPS: CategoryChip[] = [
 
 export const CategoryChips = (): ReactElement => {
   return (
+    // The mobile design has no category chips, so the section is hidden below 768px.
     <section
       aria-labelledby="category-title"
-      className="mx-auto w-full max-w-300 px-6 pb-4 md:px-8"
+      className="mx-auto hidden w-full max-w-300 px-6 pb-4 md:block md:px-8"
     >
       <h2
         id="category-title"

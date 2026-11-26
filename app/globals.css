@@ -27,6 +27,8 @@
   --text-hero--line-height: 1.15;
   --text-section: 2rem;
   --text-section--line-height: 1.15;
+  --text-section-sm: 1.75rem;
+  --text-section-sm--line-height: 1.15;
   --leading-heading: 1.15;
 
   --shadow-card:
