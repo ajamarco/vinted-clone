@@ -24,6 +24,34 @@ A running log of completed work on this project. Agents read this at the start o
 
 ## Completed work
 
+### 2026-11-26 — Landing info sections and footer
+
+- **Spec:** `specs/06-landing-info-and-footer`
+- **Summary:** Added "How it works" (three numbered steps), the closing band, and the site footer. The Wontid landing page is now complete: header, hero, shop by category, featured listings, how it works, closing band, footer.
+- **Key files:** `components/home/HowItWorks.tsx`, `ClosingBand.tsx`, `components/layout/Footer.tsx` (each with a test), `app/page.tsx`, `app/layout.tsx`, `app/globals.css`
+- **Decisions / notes:**
+  - `Footer` is rendered by the root layout after the page content, so it shows on every page. It has three labelled `nav`s (Shop, Sell, Help). All its links are `#`.
+  - The copyright year comes from `new Date().getFullYear()` in a Server Component. The home page is prerendered, so the year is fixed at build time and only updates on the next deploy.
+  - Added a `--leading-heading` token (1.15). Headings that use a Tailwind text size otherwise take Tailwind's line height rather than the design's 1.15. It is used on the step titles, the footer column headings, and the "Shop by category" heading.
+  - Checked in Edge at 1280px and 390px against a static copy of the design. The lower part of the page is within about 4px of the design's height on desktop and about 11px on mobile. The grain overlay from the design was left out, as planned.
+  - The footer sits at the bottom of the page through the layout's flex column and `flex-1` on `main`. It was not tested on a genuinely short page, because the only other route is Next's default 404, which has its own full-height layout.
+- **Follow-ups:** The design is now fully implemented apart from the paper-grain overlay and the real photos and routes. See "Known gaps / next steps".
+
+### 2026-11-26 — Landing hero and shop by category
+
+- **Spec:** `specs/05-landing-hero-and-categories`
+- **Summary:** Added the hero (dashed frame, headline, two buttons, tilted four-card collage) and the "Shop by category" chip row. The home page now reads: header, hero, shop by category, featured listings.
+- **Key files:** `components/home/Hero.tsx`, `CollageCard.tsx`, `CategoryChips.tsx` (with tests), six chip icons in `components/ui/icons/` (`DressIcon`, `JacketIcon`, `DenimIcon`, `ShoeIcon`, `BagIcon`, `AccessoriesIcon`), `app/page.tsx`, `app/layout.tsx`, `app/globals.css`
+- **Decisions / notes:**
+  - All four collage cards use `/image001.webp` with empty alt text. The collage is a `role="group"` labelled "A pinned-up display of example listings". `CollageCard` is separate from `GridCard`, because it is not a link and has no body.
+  - "Start browsing" links to `#featured` (the design does the same, and the section exists), not `#` as the spec said. "List an item" and the category chips use `#`.
+  - Fraunces is now loaded with its optical-size axis (`axes: ["opsz"]`, weights default to the full range). Without it, large headings were wider than the design's. This changes spec 02's font setup.
+  - `--text-hero--line-height` changed from 1.1 to 1.15. The design system sheet says 1.1, but the landing page (the real hero) uses 1.15 and was matched.
+  - Arbitrary values with comments: the 900px breakpoint, 1.5deg tilts, `0.06em` and `-0.02em` letter spacing, `14ch` and `36ch` widths.
+  - Checked in Edge at 1280px and 390px against a static copy of the design. Layout, wrapping and spacing match within a few pixels, apart from the sample photos replacing the design's placeholder tiles.
+  - The dev server (`next dev`) can show stale CSS for a moment after `globals.css` changes. A production build showed the correct styles.
+- **Follow-ups:** Spec 06 (how it works, closing band, footer) is next.
+
 ### 2026-11-26 — Listings restyled to Wontid
 
 - **Spec:** `specs/04-listings`

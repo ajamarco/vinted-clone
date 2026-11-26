@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { ReactElement, ReactNode } from "react";
 import { Fraunces, Source_Sans_3 } from "next/font/google";
 
+import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 
 import "./globals.css";
@@ -9,7 +10,7 @@ import "./globals.css";
 const fraunces = Fraunces({
   variable: "--font-fraunces",
   subsets: ["latin"],
-  weight: ["600", "700"],
+  axes: ["opsz"],
 });
 
 const sourceSans = Source_Sans_3({
@@ -42,6 +43,7 @@ const RootLayout = ({ children }: RootLayoutProps): ReactElement => {
       <body className="flex min-h-full flex-col">
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
