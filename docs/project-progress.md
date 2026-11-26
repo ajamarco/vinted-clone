@@ -24,6 +24,20 @@ A running log of completed work on this project. Agents read this at the start o
 
 ## Completed work
 
+### 2026-11-26 — Listings restyled to Wontid
+
+- **Spec:** `specs/04-listings`
+- **Summary:** Restyled the product card and grid to the Wontid design, added a "Featured listings" section around the grid, and changed the 30 sample listings to carry a brand and New/Sale badges. The home page now shows the header and the featured section.
+- **Key files:** `components/listings/GridCard.tsx`, `ProductGrid.tsx`, `FeaturedListings.tsx` (each with a test), `types/listing.ts`, `app/page.tsx`
+- **Decisions / notes:**
+  - `Listing` gained `brand` (required) and `badge?: ListingBadge` (`"new" | "sale"`). Brands were split out of the old titles. The 5 "New with tags" listings have the New badge and 6 others (ids 3, 7, 11, 15, 20, 27) have the Sale badge. All images are still `/image001.webp`.
+  - The card is now one `next/link` (`href="#"`) instead of an `article`. The image has empty alt text because the title names the listing. Condition shows as a `Tag` below the price row.
+  - `ProductGrid` is now a `ul` of `li`s with 1, 2 (from 600px), and 4 (from 1024px) columns, and no longer a labelled region. `FeaturedListings` is the labelled region (`id="featured"`).
+  - The Sale badge is only a label. There is no sale price or original price, because the design has none. A later task can add that to `Listing` and the card.
+  - The image hover zoom was dropped, and the whole card lifts 2px on hover instead, as in the design (skipped with reduced motion).
+  - Checked in Edge at 1280px and 390px. The design copy used for comparison renders its cards as template text, so the card was judged on structure and styles rather than pixel by pixel.
+- **Follow-ups:** "Featured listings" shows all 30 listings, which is long for a "featured" section. Specs 05 and 06 are next.
+
 ### 2026-11-26 — Visual check of specs 02 and 03
 
 - **Spec:** `specs/02-design-foundation`, `specs/03-header`
@@ -99,5 +113,7 @@ A running log of completed work on this project. Agents read this at the start o
 ## Known gaps / next steps
 
 - Font Awesome is still loaded in `app/layout.tsx` only for the logo icon. Remove it when the logo is replaced.
+- Sale listings show a "Sale" badge only, with no sale price or original price.
+- "Featured listings" shows all 30 sample listings.
 - No backend or real data yet (listings are hardcoded).
 - `npm install` reports 35 dependency audit findings; dependency remediation is outside `01-rules-compliance`.

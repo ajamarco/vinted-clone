@@ -1,63 +1,71 @@
 import type { ReactElement } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
-import type { Condition } from "@/types/listing";
+import { Badge } from "@/components/ui/badge";
+import { Tag } from "@/components/ui/Tag";
+import type { Condition, ListingBadge } from "@/types/listing";
 
 type GridCardProps = {
   image: string;
+  brand: string;
   price: string;
   condition: Condition;
   title: string;
   size: string;
+  badge?: ListingBadge;
 };
 
-const CONDITION_STYLES: Record<Condition, string> = {
-  "New with tags": "bg-emerald-100 text-emerald-800",
-  "Like new": "bg-teal-100 text-teal-800",
-  "Very good": "bg-green-100 text-green-700",
-  Good: "bg-gray-100 text-gray-600",
+const BADGE_LABELS: Record<ListingBadge, string> = {
+  new: "New",
+  sale: "Sale",
 };
 
 export const GridCard = ({
   image,
+  brand,
   price,
   condition,
   title,
   size,
+  badge,
 }: GridCardProps): ReactElement => {
   return (
-    <article className="group cursor-pointer overflow-hidden rounded-xl border border-gray-100 bg-white transition-all duration-200 hover:border-gray-200 hover:shadow-md">
-      <div className="relative aspect-3/4 w-full overflow-hidden bg-gray-50">
+    <Link
+      href="#"
+      className="border-border bg-surface text-text shadow-card hover:text-text hover:shadow-hover relative flex h-full flex-col overflow-hidden rounded-lg border no-underline transition-[box-shadow,transform] duration-200 hover:-translate-y-0.5 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+    >
+      <div className="relative aspect-4/5 w-full">
+        {/* Empty alt: the title below already names the listing. */}
         <Image
           src={image}
-          alt={title}
+          alt=""
           fill
-          sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 20vw"
-          // No standard scale utility matches the original 1.03 image zoom.
-          className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+          sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 25vw"
+          className="object-cover"
         />
       </div>
 
-      <div className="flex flex-col gap-1.5 p-3">
-        {/* No standard text size preserves the original 1.05rem price. */}
-        <p className="text-[1.05rem] leading-none font-extrabold text-gray-900">
-          {price}
-        </p>
+      {badge !== undefined && (
+        <Badge variant={badge} className="absolute top-3 left-3">
+          {BADGE_LABELS[badge]}
+        </Badge>
+      )}
 
-        {/* No standard text size preserves the original 0.65rem badge. */}
-        <span
-          className={`self-start rounded-full px-2 py-0.5 text-[0.65rem] font-semibold tracking-wide uppercase ${CONDITION_STYLES[condition]}`}
-        >
-          {condition}
+      <div className="flex flex-col gap-1 p-4">
+        {/* The design's 0.04em letter spacing has no standard Tailwind step. */}
+        <span className="text-text-muted text-sm font-semibold tracking-[0.04em] uppercase">
+          {brand}
         </span>
-
-        <p className="line-clamp-2 text-xs leading-snug font-medium text-gray-700">
+        <span className="font-heading line-clamp-2 text-xl leading-tight font-semibold">
           {title}
-        </p>
-
-        {/* No standard text size preserves the original 0.7rem size label. */}
-        <p className="text-[0.7rem] font-medium text-gray-400">{size}</p>
+        </span>
+        <div className="mt-2 flex items-baseline justify-between">
+          <span className="font-semibold">{price}</span>
+          <span className="text-text-muted text-sm">{size}</span>
+        </div>
+        <Tag className="mt-2 self-start">{condition}</Tag>
       </div>
-    </article>
+    </Link>
   );
 };
